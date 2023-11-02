@@ -29,7 +29,7 @@ def validate_length(prompt: str) -> bool:
 
 def generate_keywords(prompt: str) -> List[str]:
     # Load your API key from an environment variable or secret management service
-    openai.api_key = "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"
+    openai.api_key = "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"
     enriched_prompt = f"Generate related branding keywords for {prompt}: "
     print(enriched_prompt)
 
@@ -52,7 +52,7 @@ def generate_keywords(prompt: str) -> List[str]:
 
 def generate_branding_snippet(prompt: str) -> str:
     # Load your API key from an environment variable or secret management service
-    openai.api_key = "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"
+    openai.api_key = "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"
     enriched_prompt = f"{prompt},kelimesi için en iyi video cümlesini yaz 32 kelimelik: "
     print(enriched_prompt)
 
