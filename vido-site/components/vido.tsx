@@ -53,7 +53,11 @@ const Vido: React.FC = () => {
         setPrompt={setPrompt} 
         onSubmit={onSubmit} 
         isLoading={isLoading} 
+        setLanguage={setPrompt}
+        language={prompt}   
+        
         characterLimit={CHAR_LIMIT}/>
+        
         )
     }
 
