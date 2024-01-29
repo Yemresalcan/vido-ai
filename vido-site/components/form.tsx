@@ -20,6 +20,8 @@ interface FormProps {
       statusColor = "text-red-400";
       statusText = `Input must be less than ${props.characterLimit} characters.`;
     }
+
+    
   
     return (
       <>
