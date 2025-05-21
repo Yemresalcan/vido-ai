@@ -7,8 +7,8 @@ import { SocialIcon } from 'react-social-icons';
 
 
 const Vido: React.FC = () => { 
-    const CHAR_LIMIT: number = 32;
-    const ENDPOINT: string = "https://w5uk5fmgt1.execute-api.eu-north-1.amazonaws.com/prod/generate_snippet_and_keywords"
+    const CHAR_LIMIT: number = 1000;
+    const ENDPOINT: string = "http://127.0.0.1:8008/generate_snippet_and_keywords"
     const[prompt, setPrompt] = React.useState("")
     const[snippet, setSnippet] = React.useState("")
     const [keywords, setKeywords] = React.useState([])

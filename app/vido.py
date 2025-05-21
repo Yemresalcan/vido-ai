@@ -1,10 +1,22 @@
 import os
 from typing import List
-import openai
+import google.generativeai as genai
 import argparse
 import re
+from dotenv import load_dotenv
 
-MAX_INPUT_LENGTH = 32
+# .env dosyasındaki değişkenleri yükle
+load_dotenv()
+
+MAX_INPUT_LENGTH = 1000 # Gemini için karakter limitini artırabiliriz.
+
+# Gemini API anahtarını ortam değişkeninden al
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY ortam değişkeni .env dosyasında veya sistemde bulunamadı.")
+
+genai.configure(api_key=GEMINI_API_KEY)
+model = genai.GenerativeModel('gemini-1.5-flash-latest')
 
 
 def main():
@@ -15,8 +27,8 @@ def main():
 
     print(f"User input: {user_input}")
     if validate_length(user_input):
-        generate_branding_snippet(user_input)
-        generate_keywords(user_input)
+        snippet = generate_branding_snippet(user_input)
+        keywords = generate_keywords(user_input)
     else:
         raise ValueError(
             f"Input length is too long. Must be under {MAX_INPUT_LENGTH}. Submitted input is {user_input}"
@@ -28,48 +40,40 @@ def validate_length(prompt: str) -> bool:
 
 
 def generate_keywords(prompt: str) -> List[str]:
-    # Load your API key from an environment variable or secret management service
-    openai.api_key = "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"
-    enriched_prompt = f"Generate related branding keywords for {prompt}: "
-    print(enriched_prompt)
+    enriched_prompt = f"Generate related branding keywords for {prompt}. Return as a comma separated list:"
+    print(f"Enriched prompt for keywords: {enriched_prompt}")
 
-    response = openai.Completion.create(
-        engine="davinci-instruct-beta-v3", prompt=enriched_prompt, max_tokens=32
-    )
+    try:
+        response = model.generate_content(enriched_prompt)
+        keywords_text = response.text
+    except Exception as e:
+        print(f"Error generating keywords: {e}")
+        return []
 
-    # Extract output text.
-    keywords_text: str = response["choices"][0]["text"]
-
-    # Strip whitespace.
     keywords_text = keywords_text.strip()
-    keywords_array = re.split(",|\n|;|-", keywords_text)
-    keywords_array = [k.lower().strip() for k in keywords_array]
-    keywords_array = [k for k in keywords_array if len(k) > 0]
-
+    keywords_array = re.split(",|\n|;|\-", keywords_text)
+    keywords_array = [k.lower().strip() for k in keywords_array if k.strip()]
+    
     print(f"Keywords: {keywords_array}")
     return keywords_array
 
 
 def generate_branding_snippet(prompt: str) -> str:
-    # Load your API key from an environment variable or secret management service
-    openai.api_key = "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"
-    enriched_prompt = f"{prompt},kelimesi için en iyi video cümlesini yaz 32 kelimelik: "
-    print(enriched_prompt)
+    enriched_prompt = f"{prompt} kelimesi için en iyi video cümlesini yaz (yaklaşık 15-20 kelime):"
+    print(f"Enriched prompt for snippet: {enriched_prompt}")
+    
+    try:
+        response = model.generate_content(enriched_prompt)
+        branding_text = response.text
+    except Exception as e:
+        print(f"Error generating snippet: {e}")
+        return "Error generating snippet."
 
-    response = openai.Completion.create(
-        engine="davinci-instruct-beta-v3", prompt=enriched_prompt, max_tokens=32
-    )
-
-    # Extract output text.
-    branding_text: str = response["choices"][0]["text"]
-
-    # Strip whitespace.
     branding_text = branding_text.strip()
 
-    # Add ... to truncated statements.
-    last_char = branding_text[-1]
-    if last_char not in {".", "!", "?"}:
-        branding_text += "..."
+    # Cümlenin sonuna uygun noktalama işareti ekle (opsiyonel, Gemini genellikle bunu yapar)
+    # if branding_text and branding_text[-1] not in {".", "!", "?"}:
+    #     branding_text += "..."
 
     print(f"Snippet: {branding_text}")
     return branding_text

@@ -1,0 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+pip-wheel-metadata/
+venv/
+env/
+.env
+*.sqlite3
+instance/
+
+# Node.js (genel, vido-infra ve vido-site için)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+# package-lock.json # Genellikle biri repo'da tutulur. Projenizde hangisi varsa diğerini yorumdan çıkarın.
+# yarn.lock
+pnpm-lock.yaml 
+
+# AWS CDK
+cdk.out/
+
+# Next.js (vido-site için)
+.next/
+out/
+
+# Lambda Layer artefaktları (vido-infra/lambda_base_layer için)
+vido-infra/lambda_base_layer/layer.zip
+vido-infra/lambda_base_layer/python/
+
+# Build artefaktları
+build/
+dist/
+
+# IDE / Editör dosyaları
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# İşletim sistemi dosyaları
+.DS_Store
+Thumbs.db 

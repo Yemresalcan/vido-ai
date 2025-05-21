@@ -23,7 +23,7 @@ export class VidoInfraStack extends cdk.Stack {
       handler: "vido_api.handler",
       layers: [layer],
       environment: {
-        OPENAI_API_KEY: process.env.OPENAI_API_KEY ?? "",
+        GEMINI_API_KEY: process.env.GEMINI_API_KEY ?? "",
       },
     });
     const vidoApi = new apiGateway.RestApi(this, "RestApi", {

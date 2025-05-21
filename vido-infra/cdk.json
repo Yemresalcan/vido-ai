@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/vido-infra.ts",
+  "app": "node -r ts-node/register bin/vido-infra.ts",
   "watch": {
     "include": [
       "**"
