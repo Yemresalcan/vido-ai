@@ -1,7 +1,0 @@
-fastapi
-mangum
-google-generativeai
-python-dotenv
-requests
-pydantic-core
-pydantic>=1.2.0,<2.0.0

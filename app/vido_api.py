@@ -1,13 +1,13 @@
 from fastapi import FastAPI,HTTPException
 from vido import generate_branding_snippet, generate_keywords
-from mangum import Mangum
+# AWS Lambda için mangum kaldırıldı
 
 from fastapi.middleware.cors import CORSMiddleware
 
 
 app = FastAPI()
-handler = Mangum(app)
-MAX_INPUT_LENGTH = 32
+# AWS Lambda handler kaldırıldı - artık yerel FastAPI sunucusu
+MAX_INPUT_LENGTH = 1000  # Limitii artırdık
 
 app.add_middleware(
     CORSMiddleware,
@@ -44,5 +44,11 @@ def validate_input_length(prompt: str):
             status_code=400,
             detail=f"Input length is too long. Must be under {MAX_INPUT_LENGTH} characters.",
         )
+
+
+# Yerel geliştirme için uvicorn server başlatıcı
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8008)
 
 

@@ -31,7 +31,7 @@ const Results: React.FC<ResultsProps> = (props) => {
     return (
       <div className="bg-slate-700 p-4 my-3 rounded-md">
         <div className="text-slate-400 text-sm font-bold mb-4">{label}</div>
-        <div>{body}</div>
+        <div className="text-slate-100 leading-relaxed text-base">{body}</div>
       </div>
     );
   };
@@ -43,7 +43,13 @@ const Results: React.FC<ResultsProps> = (props) => {
           "Girdiğiniz Kelime",
           <div className="text-lg font-bold">{props.prompt}</div>
         )}
-        {resultSection("Oluşturulan Cümle", props.snippet)}
+        {resultSection("Oluşturulan Cümle", (
+          <div className="bg-slate-600 p-4 rounded-lg">
+            <div className="text-slate-100 leading-relaxed text-base whitespace-pre-wrap break-words">
+              {props.snippet}
+            </div>
+          </div>
+        ))}
         {resultSection("Kelimeler", (
           <div className="flex flex-wrap gap-2">{keywordElements}</div>
         ))}

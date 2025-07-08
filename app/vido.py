@@ -51,7 +51,7 @@ def generate_keywords(prompt: str) -> List[str]:
         return []
 
     keywords_text = keywords_text.strip()
-    keywords_array = re.split(",|\n|;|\-", keywords_text)
+    keywords_array = re.split(",|\n|;|\\-", keywords_text)
     keywords_array = [k.lower().strip() for k in keywords_array if k.strip()]
     
     print(f"Keywords: {keywords_array}")
@@ -70,6 +70,11 @@ def generate_branding_snippet(prompt: str) -> str:
         return "Error generating snippet."
 
     branding_text = branding_text.strip()
+    
+    # Yıldızları ve diğer gereksiz karakterleri temizle
+    branding_text = re.sub(r'\*+', '', branding_text)  # *** yıldızları kaldır
+    branding_text = re.sub(r'^\s*[-•]\s*', '', branding_text)  # Başındaki - veya • işaretlerini kaldır
+    branding_text = branding_text.strip()  # Temizleme sonrası boşlukları kaldır
 
     # Cümlenin sonuna uygun noktalama işareti ekle (opsiyonel, Gemini genellikle bunu yapar)
     # if branding_text and branding_text[-1] not in {".", "!", "?"}:
