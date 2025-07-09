@@ -108,7 +108,11 @@ vido-ai/
 
 3. **Docker Compose ile başlatın**
    ```bash
+   # Production mode
    docker-compose up -d
+   
+   # Development mode (hot reload ile)
+   docker-compose -f docker-compose.dev.yml up -d
    ```
 
 4. **Uygulamaya erişin**
@@ -303,13 +307,16 @@ docker system prune -a
 <div align="center">
 
 ### 🎨 Ana Arayüz
-![Ana Arayüz](https://via.placeholder.com/800x600/1a1a1a/yellow?text=Vido+AI+Arayuzu)
+![Ana Arayüz](./screenshots/screenshot1.png)
+*Platform ve ton seçimi ile AI destekli içerik üretim arayüzü*
 
 ### 📱 Mobil Responsive
-![Mobil Görünüm](https://via.placeholder.com/400x800/1a1a1a/yellow?text=Mobil+Gorunum)
+![Mobil Görünüm](./screenshots/screenshot2.png)
+*Mobil cihazlar için optimize edilmiş tam responsive tasarım*
 
 ### ⚡ API Dokümantasyonu
-![API Dokümanları](https://via.placeholder.com/800x600/1a1a1a/yellow?text=FastAPI+Dokumanlari)
+![API Dokümantasyonu](./screenshots/screenshot3.png)
+*Swagger UI ile interaktif FastAPI dokümantasyonu*
 
 </div>
 

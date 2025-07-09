@@ -2,12 +2,19 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Install system dependencies
+RUN apk add --no-cache libc6-compat
+
 # Install dependencies
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 
 # Copy application code
 COPY . .
+
+# Set environment variables for build
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NODE_ENV=production
 
 # Build the application
 RUN npm run build
@@ -17,7 +24,6 @@ RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001
 
 # Set the correct permission for prerender cache
-RUN mkdir .next
 RUN chown nextjs:nodejs .next
 
 # Switch to non-root user
@@ -26,11 +32,7 @@ USER nextjs
 # Expose port
 EXPOSE 3000
 
-ENV PORT 3000
-
-# Health check
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:3000 || exit 1
+ENV PORT=3000
 
 # Start the application
 CMD ["npm", "start"] 

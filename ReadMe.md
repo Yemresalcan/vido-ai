@@ -108,7 +108,11 @@ vido-ai/
 
 3. **Launch with Docker Compose**
    ```bash
+   # Production mode
    docker-compose up -d
+   
+   # Development mode (with hot reload)
+   docker-compose -f docker-compose.dev.yml up -d
    ```
 
 4. **Access the application**
@@ -297,13 +301,16 @@ docker system prune -a
 <div align="center">
 
 ### 🎨 Main Interface
-![Main Interface](https://via.placeholder.com/800x600/1a1a1a/yellow?text=Vido+AI+Interface)
+![Main Interface](./screenshots/screenshot1.png)
+*AI-powered content generation interface with platform and tone selection*
 
 ### 📱 Mobile Responsive
-![Mobile View](https://via.placeholder.com/400x800/1a1a1a/yellow?text=Mobile+View)
+![Mobile View](./screenshots/screenshot2.png)
+*Fully responsive design optimized for mobile devices*
 
 ### ⚡ API Documentation
-![API Docs](https://via.placeholder.com/800x600/1a1a1a/yellow?text=FastAPI+Docs)
+![API Documentation](./screenshots/screenshot3.png)
+*Interactive FastAPI documentation with Swagger UI*
 
 </div>
 
