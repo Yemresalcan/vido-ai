@@ -120,6 +120,13 @@ vido-ai/
    - ⚡ **Backend**: [http://localhost:8000](http://localhost:8000)
    - 📖 **API Dokümanları**: [http://localhost:8000/docs](http://localhost:8000/docs)
 
+### 🚀 Opsiyonel: Docker Hub Kurulumu
+Release'lerde otomatik Docker image yayınlamayı etkinleştirmek için:
+1. GitHub Repository → Settings → Secrets and variables → Actions
+2. `DOCKERHUB_USERNAME` ekleyin (Docker Hub kullanıcı adınız)
+3. `DOCKERHUB_TOKEN` ekleyin (Docker Hub erişim token'ı)
+4. `.github/workflows/release.yml` dosyasında `if: false` kısmını `if: true` yapın
+
 ### 💻 Manuel Kurulum
 
 <details>
@@ -360,16 +367,16 @@ Bu otomatik olarak:
 - Git tag oluşturup push eder
 - GitHub Actions'ı tetikleyerek:
   - GitHub release oluşturur
-  - Docker image'larını build edip push eder
   - CHANGELOG.md'den release notları oluşturur
+  - Docker image'larını build eder (opsiyonel - Docker Hub kurulumu gerektirir)
 
 ### Sürüm İçerikleri
 
 Her sürüm şunları içerir:
 - **Kaynak kod** (zip ve tar.gz)
-- **Docker image'ları** Docker Hub'da
 - **Otomatik release notları** CHANGELOG.md'den
 - **Kurulum talimatları**
+- **Docker image'ları** (manuel build veya Docker Hub kurulumu ile)
 
 ---
 
