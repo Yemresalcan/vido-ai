@@ -120,6 +120,13 @@ vido-ai/
    - ⚡ **Backend**: [http://localhost:8000](http://localhost:8000)
    - 📖 **API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
 
+### 🚀 Optional: Docker Hub Setup
+To enable automatic Docker image publishing on releases:
+1. Go to GitHub Repository → Settings → Secrets and variables → Actions
+2. Add `DOCKERHUB_USERNAME` (your Docker Hub username)
+3. Add `DOCKERHUB_TOKEN` (Docker Hub access token)
+4. Edit `.github/workflows/release.yml` and change `if: false` to `if: true`
+
 ### 💻 Manual Installation
 
 <details>
@@ -354,16 +361,16 @@ This will automatically:
 - Create and push a git tag
 - Trigger GitHub Actions to:
   - Create a GitHub release
-  - Build and push Docker images
   - Generate release notes from CHANGELOG.md
+  - Build Docker images (optional - requires Docker Hub setup)
 
 ### Release Assets
 
 Each release includes:
 - **Source code** (zip & tar.gz)
-- **Docker images** on Docker Hub
 - **Automatic release notes** from CHANGELOG.md
 - **Installation instructions**
+- **Docker images** (manual build or with Docker Hub setup)
 
 ---
 

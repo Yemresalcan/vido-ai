@@ -120,6 +120,53 @@ vido-ai/
    - ⚡ **Backend**: [http://localhost:8000](http://localhost:8000)
    - 📖 **API Dokümanları**: [http://localhost:8000/docs](http://localhost:8000/docs)
 
+### 🚀 Production Deployment
+
+#### Fly.io Backend Deployment (Önerilen)
+
+1. **Fly CLI Kurulumu**
+   ```bash
+   # Windows
+   iwr https://fly.io/install.ps1 -useb | iex
+   
+   # Mac/Linux
+   curl -L https://fly.io/install.sh | sh
+   ```
+
+2. **Fly.io'ya giriş yapın**
+   ```bash
+   fly auth login
+   ```
+
+3. **Fly.io app oluşturun**
+   ```bash
+   cd app
+   fly launch --name vido-ai-backend
+   ```
+
+4. **Environment variables ayarlayın**
+   ```bash
+   fly secrets set GEMINI_API_KEY=your_api_key_here
+   ```
+
+5. **Deploy edin**
+   ```bash
+   # Windows
+   scripts\deploy-flyio.bat
+   
+   # Linux/Mac
+   ./scripts/deploy-flyio.sh
+   ```
+
+Backend'iniz şu adreste canlı olacak: `https://vido-ai-backend.fly.dev`
+
+#### Vercel Frontend Deployment
+
+1. **GitHub'a fork/clone yapın**
+2. **Vercel'e bağlayın** ([vercel.com](https://vercel.com))
+3. **Environment variable ayarlayın**: `NEXT_PUBLIC_API_URL=https://vido-ai-backend.fly.dev/generate_snippet_and_keywords`
+4. **Deploy edin** ✨
+
 ### 🚀 Opsiyonel: Docker Hub Kurulumu
 Release'lerde otomatik Docker image yayınlamayı etkinleştirmek için:
 1. GitHub Repository → Settings → Secrets and variables → Actions

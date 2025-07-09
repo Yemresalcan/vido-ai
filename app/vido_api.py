@@ -21,13 +21,25 @@ MAX_INPUT_LENGTH = 1000  # Limitii artırdık
 # Security middleware
 app.add_middleware(
     TrustedHostMiddleware, 
-    allowed_hosts=["localhost", "127.0.0.1", "*.vercel.app", "*.railway.app"]
+    allowed_hosts=[
+        "localhost", 
+        "127.0.0.1", 
+        "*.vercel.app", 
+        "*.fly.dev",
+        "vido-ai-backend.fly.dev"
+    ]
 )
 
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000", "https://*.vercel.app"],
+    allow_origins=[
+        "http://localhost:3000", 
+        "http://127.0.0.1:3000", 
+        "https://*.vercel.app",
+        "https://vido-ai.vercel.app",
+        "https://vido-ai-frontend.vercel.app"
+    ],
     allow_credentials=False,
     allow_methods=["GET"],
     allow_headers=["*"],
