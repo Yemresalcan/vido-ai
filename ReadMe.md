@@ -335,6 +335,36 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 - **Test Coverage**: Minimum 80% for PRs
 - **Documentation**: Update README for new features
 
+## 🏷️ Releases
+
+### Creating a New Release
+
+For maintainers to create a new release:
+
+```bash
+# Linux/Mac
+./scripts/create-release.sh 1.0.0
+
+# Windows
+scripts\create-release.bat 1.0.0
+```
+
+This will automatically:
+- Update version numbers in all files
+- Create and push a git tag
+- Trigger GitHub Actions to:
+  - Create a GitHub release
+  - Build and push Docker images
+  - Generate release notes from CHANGELOG.md
+
+### Release Assets
+
+Each release includes:
+- **Source code** (zip & tar.gz)
+- **Docker images** on Docker Hub
+- **Automatic release notes** from CHANGELOG.md
+- **Installation instructions**
+
 ---
 
 ## 📄 License
@@ -375,6 +405,9 @@ If you find this project helpful, please consider:
 <div align="center">
 
 **⚡ Powered by AI • 🚀 Built with passion • 🌟 Open Source**
+
+[![Latest Release](https://img.shields.io/github/v/release/Yemresalcan/vido-ai?style=for-the-badge)](https://github.com/Yemresalcan/vido-ai/releases/latest)
+[![Docker Pulls](https://img.shields.io/docker/pulls/yemresalcan/vido-ai-backend?style=for-the-badge)](https://hub.docker.com/r/yemresalcan/vido-ai-backend)
 
 Made with ❤️ by [Yunus Emre Salcan](https://github.com/Yemresalcan)
 
