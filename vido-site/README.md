@@ -1,38 +1,286 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# ⚛️ Vido AI Frontend
 
-## Getting Started
+Next.js tabanlı modern web arayüzü. AI destekli içerik üretimi için kullanıcı dostu deneyim sunar.
 
-First, run the development server:
+## 📁 Dosya Yapısı
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+```
+vido-site/
+├── components/          # React bileşenleri
+│   ├── form.tsx        # Ana form bileşeni (platform/ton seçimi)
+│   ├── result.tsx      # Sonuç gösterim bileşeni
+│   └── vido.tsx        # Ana container bileşeni
+├── pages/              # Next.js routing
+│   ├── _app.tsx       # Global app wrapper
+│   ├── _document.tsx  # HTML document structure
+│   ├── index.tsx      # Ana sayfa
+│   └── api/           # API routes (kullanılmıyor)
+├── public/            # Static assets
+│   ├── tr.png         # Türk bayrağı
+│   ├── usa.png        # ABD bayrağı
+│   ├── logo.png       # Logo
+│   └── ...
+├── styles/            # CSS dosyaları
+│   ├── globals.css    # Global styles
+│   └── Home.module.css
+└── package.json       # Dependencies
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Kurulum
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### 1. Dependencies
+```bash
+npm install
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### 2. Development Server
+```bash
+npm run dev
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Frontend http://localhost:3000 adresinde çalışır.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 3. Production Build
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## 🎨 Design System
 
-To learn more about Next.js, take a look at the following resources:
+### Color Palette
+- **Primary**: Yellow (#EAB308, #FDE047)
+- **Background**: Dark gradients (#0F0F23, #1E1B3C)
+- **Text**: Light colors (#F8FAFC, #E2E8F0)
+- **Accents**: Blue (#3B82F6, #1D4ED8)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Typography
+- **Heading**: 'Orbitron' (Futuristic feel)
+- **Body**: System fonts (Inter, -apple-system)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Components
 
-## Deploy on Vercel
+#### Form Component (`components/form.tsx`)
+Ana kullanıcı arayüzü:
+- **Language Selector**: 🇹🇷/🇺🇸 bayrak butonları
+- **Platform Selector**: Instagram, TikTok, YouTube, Twitter
+- **Tone Selector**: 6 farklı ton seçeneği
+- **Keyword Input**: Anahtar kelime girişi
+- **Generate Button**: AI içerik üretimi tetikleyici
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Result Component (`components/result.tsx`)
+Sonuç gösterim arayüzü:
+- **Title Display**: Üretilen başlık
+- **Description**: Formatlanmış açıklama
+- **Keywords**: Tag formatında anahtar kelimeler
+- **Copy Button**: Clipboard'a kopyalama
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+#### Vido Component (`components/vido.tsx`)
+Ana container:
+- State management
+- API communication
+- Loading states
+- Error handling
+
+## 🌟 UI Features
+
+### Modern AI Aesthetics
+- **Glassmorphism**: backdrop-blur effects
+- **Floating Elements**: Animated background circles
+- **Gradient Overlays**: Multi-layer backgrounds
+- **Smooth Animations**: CSS transitions & transforms
+
+### Interactive Elements
+- **Hover Effects**: Scale & color transitions
+- **Loading States**: Spinning animations
+- **Button Feedback**: Active & focus states
+- **Responsive Design**: Mobile-first approach
+
+### Multilingual Support
+İki dil için complete UI texts:
+
+```typescript
+const texts = {
+  tr: {
+    title: "Vido AI",
+    subtitle: "Sosyal Medya İçerik Üretici",
+    // ... 50+ text entries
+  },
+  en: {
+    title: "Vido AI", 
+    subtitle: "Social Media Content Generator",
+    // ... 50+ text entries
+  }
+}
+```
+
+## 🔧 API Integration
+
+### Backend Communication
+```typescript
+const response = await fetch('http://localhost:8000/generate', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    keyword,
+    platform,
+    tone,
+    language
+  })
+});
+```
+
+### Error Handling
+- Network error catching
+- User-friendly error messages
+- Retry mechanisms
+- Loading state management
+
+## 📱 Responsive Design
+
+### Breakpoints
+- **Mobile**: 320px - 768px
+- **Tablet**: 768px - 1024px  
+- **Desktop**: 1024px+
+
+### Mobile Optimizations
+- Touch-friendly button sizes
+- Optimized spacing
+- Readable font sizes
+- Swipe gestures ready
+
+## 🎯 State Management
+
+### Component State
+```typescript
+interface VidoState {
+  keyword: string;
+  platform: Platform;
+  tone: Tone;
+  language: Language;
+  loading: boolean;
+  result: GeneratedContent | null;
+}
+```
+
+### Props Flow
+```
+Vido (container)
+├── Form (input handling)
+└── Result (output display)
+```
+
+## 🛠️ Development
+
+### Code Standards
+- **TypeScript**: Strict mode enabled
+- **ESLint**: Next.js recommended config
+- **Prettier**: Code formatting
+- **Component Structure**: Functional components with hooks
+
+### Custom Hooks (Gelecek)
+```typescript
+// Potential custom hooks
+const useVidoGenerator = () => { ... }
+const useClipboard = () => { ... }
+const useLanguage = () => { ... }
+```
+
+## 🎨 Styling Architecture
+
+### Tailwind Classes
+Utility-first CSS approach:
+```tsx
+className="bg-gradient-to-br from-yellow-400/20 to-blue-600/20 
+           backdrop-blur-sm border border-yellow-400/30 
+           rounded-xl p-6 shadow-2xl hover:scale-105 
+           transition-all duration-300"
+```
+
+### CSS Variables
+```css
+:root {
+  --primary-yellow: #EAB308;
+  --bg-dark: #0F0F23;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+}
+```
+
+## 📦 Dependencies
+
+### Core
+- `next` - React framework
+- `react` - UI library
+- `typescript` - Type safety
+
+### Styling
+- `tailwindcss` - Utility CSS
+- `@tailwindcss/forms` - Form styling
+
+### Development
+- `eslint` - Linting
+- `eslint-config-next` - Next.js ESLint config
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+```bash
+npm run build
+# Deploy to Vercel
+```
+
+### Static Export
+```bash
+npm run build
+npm run export
+```
+
+### Environment Variables
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+## 🎯 Future Enhancements
+
+### Planned Features
+- [ ] Dark/Light mode toggle
+- [ ] Content history
+- [ ] Favorite templates
+- [ ] Export options (PDF, TXT)
+- [ ] Social sharing
+- [ ] Analytics integration
+
+### UI Improvements
+- [ ] Advanced animations
+- [ ] Keyboard shortcuts
+- [ ] Accessibility improvements
+- [ ] Progressive Web App (PWA)
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**1. API Connection Failed**
+```
+TypeError: Failed to fetch
+```
+**Çözüm**: Backend servisinin çalıştığından emin olun (localhost:8000).
+
+**2. Build Errors**
+```
+Type error: Property 'X' does not exist
+```
+**Çözüm**: TypeScript type definitions kontrolü yapın.
+
+**3. Styling Issues**
+```
+Tailwind classes not working
+```
+**Çözüm**: `npm run dev` restart, Tailwind config kontrolü.
+
+## 📸 Screenshots
+
+[UI screenshots buraya eklenecek]
+
+---
+💡 **Frontend development için sorularınız varsa documentation'a başvurun!**

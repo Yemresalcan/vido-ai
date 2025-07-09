@@ -31,11 +31,7 @@ export default function Home() {
         <meta name="author" content="Yunus emre salcan" />
         <link rel="icon" href="/beeicon.ico" />
       </Head>
-      <Marquee speed={150} loop={marqueeLoops}>
-        {showText && <a href='' className="text-2xl text-center text-yellow-500 bg-slate-900 mt-36 rounded-md"
-        >Bu site toplam 2 ay gibi bir sürede tamamlanmıştır ! - This site has been completed in a total of about 2 months !.
-        </a>}
-      </Marquee>
+
       <Vido />
     </>
   );

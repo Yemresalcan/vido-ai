@@ -18,16 +18,15 @@ yarn-error.log*
 # yarn.lock
 pnpm-lock.yaml 
 
-# AWS CDK
-cdk.out/
-
 # Next.js (vido-site için)
 .next/
 out/
+.vercel/
 
-# Lambda Layer artefaktları (vido-infra/lambda_base_layer için)
-vido-infra/lambda_base_layer/layer.zip
-vido-infra/lambda_base_layer/python/
+# Python AI specific
+*.log
+.env.local
+.env.production
 
 # Build artefaktları
 build/

@@ -1,7 +1,30 @@
 {
-  "name": "vido-site",
-  "version": "0.1.0",
-  "private": true,
+  "name": "vido-ai-frontend",
+  "version": "1.0.0",
+  "description": "AI-powered content generation for social media platforms - Frontend",
+  "author": "Yunus Emre Salcan <yunusemresalcan@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Yemresalcan/vido-ai#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yemresalcan/vido-ai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Yemresalcan/vido-ai/issues"
+  },
+  "keywords": [
+    "ai",
+    "content-generation",
+    "social-media",
+    "nextjs",
+    "typescript",
+    "gemini-ai",
+    "instagram",
+    "tiktok",
+    "youtube",
+    "twitter"
+  ],
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
