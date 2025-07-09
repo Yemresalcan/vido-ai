@@ -301,15 +301,15 @@ docker system prune -a
 <div align="center">
 
 ### 🎨 Main Interface
-![Main Interface](./screenshots/screenshot1.png)
+![Main Interface](./screenshot/Screenshot_1.png)
 *AI-powered content generation interface with platform and tone selection*
 
 ### 📱 Mobile Responsive
-![Mobile View](./screenshots/screenshot2.png)
+![Mobile View](./screenshot/Screenshot_2.png)
 *Fully responsive design optimized for mobile devices*
 
 ### ⚡ API Documentation
-![API Documentation](./screenshots/screenshot3.png)
+![API Documentation](./screenshot/Screenshot_3.png)
 *Interactive FastAPI documentation with Swagger UI*
 
 </div>

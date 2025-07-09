@@ -307,15 +307,15 @@ docker system prune -a
 <div align="center">
 
 ### 🎨 Ana Arayüz
-![Ana Arayüz](./screenshots/screenshot1.png)
+![Ana Arayüz](./screenshot/Screenshot_1.png)
 *Platform ve ton seçimi ile AI destekli içerik üretim arayüzü*
 
 ### 📱 Mobil Responsive
-![Mobil Görünüm](./screenshots/screenshot2.png)
+![Mobil Görünüm](./screenshot/Screenshot_2.png)
 *Mobil cihazlar için optimize edilmiş tam responsive tasarım*
 
 ### ⚡ API Dokümantasyonu
-![API Dokümantasyonu](./screenshots/screenshot3.png)
+![API Dokümantasyonu](./screenshot/Screenshot_3.png)
 *Swagger UI ile interaktif FastAPI dokümantasyonu*
 
 </div>
