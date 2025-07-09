@@ -341,6 +341,36 @@ Katkılarınızı memnuniyetle karşılıyoruz! Detaylar için [Katkı Kılavuzu
 - **Test Kapsamı**: PR'lar için minimum %80
 - **Dokümantasyon**: Yeni özellikler için README güncellemesi
 
+## 🏷️ Sürümler
+
+### Yeni Sürüm Oluşturma
+
+Proje geliştiricileri için yeni sürüm oluşturma:
+
+```bash
+# Linux/Mac
+./scripts/create-release.sh 1.0.0
+
+# Windows
+scripts\create-release.bat 1.0.0
+```
+
+Bu otomatik olarak:
+- Tüm dosyalarda sürüm numaralarını günceller
+- Git tag oluşturup push eder
+- GitHub Actions'ı tetikleyerek:
+  - GitHub release oluşturur
+  - Docker image'larını build edip push eder
+  - CHANGELOG.md'den release notları oluşturur
+
+### Sürüm İçerikleri
+
+Her sürüm şunları içerir:
+- **Kaynak kod** (zip ve tar.gz)
+- **Docker image'ları** Docker Hub'da
+- **Otomatik release notları** CHANGELOG.md'den
+- **Kurulum talimatları**
+
 ---
 
 ## 📄 Lisans
@@ -381,6 +411,9 @@ Bu projeyi faydalı bulduysanız lütfen:
 <div align="center">
 
 **⚡ AI ile Güçlendirildi • 🚀 Tutkuyla İnşa Edildi • 🌟 Açık Kaynak**
+
+[![En Son Sürüm](https://img.shields.io/github/v/release/Yemresalcan/vido-ai?style=for-the-badge)](https://github.com/Yemresalcan/vido-ai/releases/latest)
+[![Docker Pulls](https://img.shields.io/docker/pulls/yemresalcan/vido-ai-backend?style=for-the-badge)](https://hub.docker.com/r/yemresalcan/vido-ai-backend)
 
 ❤️ ile yapıldı [Yunus Emre Salcan](https://github.com/Yemresalcan) tarafından
 
