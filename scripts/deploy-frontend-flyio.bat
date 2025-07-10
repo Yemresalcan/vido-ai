@@ -20,10 +20,10 @@ if %errorlevel% neq 0 (
 )
 
 REM Fly uygulaması var mı kontrol et
-fly apps list | findstr "vido-ai-frontend" >nul
+fly apps list | findstr "vido-ai-web" >nul
 if %errorlevel% neq 0 (
     echo 📦 Yeni Fly uygulaması oluşturuluyor...
-    fly launch --no-deploy --copy-config --name vido-ai-frontend
+    fly launch --no-deploy --copy-config --name vido-ai-web
 )
 
 REM Environment variables ayarla
@@ -35,7 +35,7 @@ echo 🚀 Frontend deploy ediliyor...
 fly deploy
 
 echo ✅ Frontend başarıyla deploy edildi!
-echo 🌐 Frontend URL: https://vido-ai-frontend.fly.dev
+echo 🌐 Frontend URL: https://vido-ai-web.fly.dev
 
 REM Ana dizine geri dön
 cd ..

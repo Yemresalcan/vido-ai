@@ -19,9 +19,9 @@ if ! fly auth whoami &> /dev/null; then
 fi
 
 # Fly uygulaması var mı kontrol et
-if ! fly apps list | grep -q "vido-ai-frontend"; then
+if ! fly apps list | grep -q "vido-ai-web"; then
     echo "📦 Yeni Fly uygulaması oluşturuluyor..."
-    fly launch --no-deploy --copy-config --name vido-ai-frontend
+    fly launch --no-deploy --copy-config --name vido-ai-web
 fi
 
 # Environment variables ayarla
@@ -33,7 +33,7 @@ echo "🚀 Frontend deploy ediliyor..."
 fly deploy
 
 echo "✅ Frontend başarıyla deploy edildi!"
-echo "🌐 Frontend URL: https://vido-ai-frontend.fly.dev"
+echo "🌐 Frontend URL: https://vido-ai-web.fly.dev"
 
 # Ana dizine geri dön
 cd .. 
