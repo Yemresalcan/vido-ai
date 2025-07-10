@@ -8,7 +8,7 @@ RUN apk add --no-cache libc6-compat
 
 # Install dependencies based on the preferred package manager
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
 
 # Rebuild the source code only when needed
 FROM node:18-alpine AS builder
@@ -31,6 +31,9 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+
+# Install curl for health check
+RUN apk add --no-cache curl
 
 # Create a non-root user
 RUN addgroup -g 1001 -S nodejs

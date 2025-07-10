@@ -28,7 +28,7 @@ if %errorlevel% neq 0 (
 
 REM Environment variables ayarla
 echo 🔧 Environment variables ayarlanıyor...
-fly secrets set NEXT_PUBLIC_API_URL="https://vido-ai-backend.fly.dev"
+fly secrets set NEXT_PUBLIC_API_URL="https://vido-ai.fly.dev"
 
 REM Deploy et
 echo 🚀 Frontend deploy ediliyor...
