@@ -9,7 +9,8 @@ import { Platform, Tone, Language, ApiResponse, TextContent } from '../types';
 
 const Vido: React.FC = () => { 
     const CHAR_LIMIT: number = 1000;
-    const ENDPOINT: string = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/generate_snippet_and_keywords"
+    const API_BASE_URL: string = process.env.NEXT_PUBLIC_API_URL || "https://vido-ai.fly.dev"
+    const ENDPOINT: string = `${API_BASE_URL}/generate_snippet_and_keywords`
     const[prompt, setPrompt] = React.useState("")
     const[snippet, setSnippet] = React.useState("")
     const [keywords, setKeywords] = React.useState([])
