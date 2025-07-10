@@ -38,7 +38,9 @@ app.add_middleware(
         "http://127.0.0.1:3000", 
         "https://*.vercel.app",
         "https://vido-ai.vercel.app",
-        "https://vido-ai-frontend.vercel.app"
+        "https://vido-ai-frontend.vercel.app",
+        "https://vido-ai-web.fly.dev",
+        "https://*.fly.dev"
     ],
     allow_credentials=False,
     allow_methods=["GET"],
